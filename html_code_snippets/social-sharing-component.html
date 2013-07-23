@@ -1,0 +1,57 @@
+<!-- start : .social-share-component -->
+<div class="cms social-share-component"> 
+  <script type="text/javascript">
+                /*<![CDATA[*/
+                            
+                        var social_share = {		
+                        
+                            init : function ()	{
+                                _this = this;
+                                
+                                $('.social-share-icon').live('click', function (e)	{														
+                                     e.preventDefault();
+                                    _this.social_share($(this).text());
+                                    
+                                });
+                            },
+                            
+                            social_share:	function(type)	{
+                            
+                                var page_url = window.location.href;
+                                var page_title = window.document.title;
+								var w = 600;
+								var h = 600;
+								var left = (screen.width/2)-(w/2);
+								var top = (screen.height/2)-(h/2);								
+                                var share_url='';	
+                                var day = new Date();
+                                var pid = day.getTime();
+								                               
+                                if(type == 'Facebook') {
+                                    share_url = "http://www.facebook.com/share.php?src=bm&amp;u=" + page_url + "&amp;t=" + page_title;
+                                } else if(type == 'Twitter') {
+                                    share_url = "http://twitter.com/home?status=" + page_url;
+                                } else if(type == 'Pinterest') {
+                                    share_url = "http://pinterest.com/pin/create/button/?url="+ page_url + "&amp;description=General Pants Co.";
+                                } else if(type == 'Google+') {
+                                    share_url = "https://plus.google.com/share?url=" + page_url; 
+                                }	                                                                        
+                                
+								 eval("page" + pid + " = window.open(share_url, '" + pid + "', 'toolbar=0,scrollbars=0,location=0,statusbar=0,menubar=0,resizable=0,width="+w+",height="+h+",left="+left+",top="+top+"');");
+
+                            }
+                        }
+                    
+                    $(document).ready(function() {
+                        social_share.init();	
+                    });		
+                    /*]]>*/
+                </script>
+  <ul class="mod-social-share">
+    <li> <a title="Share this page on Facebook" class="icon-facebook social-share-icon" href="#" >Facebook</a> </li>
+    <li> <a title="Share this page on Twitter" class="icon-twitter social-share-icon" href="#" >Twitter</a></li>
+    <li> <a title="Share this page on Pinterest" class="icon-pinterest social-share-icon" href="#" >Pinterest</a></li>
+    <li> <a title="Share this page on Google+" class="icon-google-plus social-share-icon" href="#" >Google+</a></li>
+  </ul>
+</div>
+<!-- // end : .social-share-component --> 
